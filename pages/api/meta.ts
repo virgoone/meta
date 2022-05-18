@@ -15,13 +15,22 @@ const metaScraper = require('metascraper')([
   require('metascraper-clearbit')()
 ])
 
-type Data = {
-  [key: string]: any
+export type MetaData = {
+  title?: string
+  description?: string
+  url?: string
+  image?: string
+  logo?: string
+  author?: string
+  publisher?: string
+  base64Image?: string
+  base64Logo?: string
+  error?: string
 }
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse<MetaData>
 ) {
   const url = decodeURIComponent(req.query.url as string)
 
